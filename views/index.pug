@@ -1,0 +1,11 @@
+extends layout
+//- so you can run this shit.
+//- in blocks and shit. i have no idea why
+//- you'd want this. when you can just use react.
+//- or typical js shit.
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="/", method="POST")
+    input(type="email", placeholder="Enter email")
+    button(type="submit") Submit
