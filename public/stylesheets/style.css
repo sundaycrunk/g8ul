@@ -1,12 +1,17 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
   background-color: #111;
   color: white;
 }
 
 a {
   color: #00B7FF;
+}
+
+p {
+  display: inline-block;
+  margin-right: 10px;
 }
 
 .orange {
