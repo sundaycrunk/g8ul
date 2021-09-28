@@ -1,6 +1,6 @@
 /* jshint indent: 2 */
 
-'use strict':
+'use strict'
 module.exports = (sequelize, DataTypes) => {
   var Lead = sequelize.define("Lead", {
     id: {

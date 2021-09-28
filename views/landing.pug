@@ -1,15 +1,31 @@
 extends layout
-//- so you can run this shit.
-//- in blocks and shit. i have no idea why
-//- you'd want this. when you can just use react.
-//- or typical js shit.
+
 block content
-  h1= title
-  p Welcome to #{title}
-  //- cool
-  //- so this form is going to make a post request
-  //- and that request body is going to contain one property
-  //- named lead email.
+  h1 Welcome to #{title}
+  p= subtitle
+
   form(action="/", method="POST")
     input(name="lead_email" type="email", placeholder="Enter email")
     button(type="submit") Submit
+  if leads
+    h1 Leads
+    for lead in leads
+      p(id=lead.id)
+        span.orange #{lead.email}
+        | 
+        a(href="/lead/" + lead.id) Details
+        |
+        |
+        //- bitchCunt is not defined.
+        button(onClick=`deleteLead('${lead.id}')`) Delete
+        //- this works perfectly.
+        //- form(action="/lead/" + lead.id + "/delete", method="POST")
+        //-   button(type="submit") Delete
+  script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+  script(src="/javascripts/leads.js")
+  
+
+
+//- p#lblMessage(class=(status  ? 'text-success' : 'text-warning')) #{message}
+//- you can do shit like this. cool.
+//- but how are the vars stored?
