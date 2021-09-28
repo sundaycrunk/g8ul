@@ -1,22 +1,25 @@
 doctype html
-html(lang='en')
+html(lang="en")
+  include common/head.pug
+  +head("Starter MVP")
+  body
 //- this page, when called, expects to be able to work with a lead object.
 //- it has no idea what title is.
 
 //- so how then does this receive the lead variable?
 
-block content
-  h1 Lead
-  //- p #{title}
-  span this is the single lead page.
-  p 
-    span #{lead.email}
-    |
-    |
-    a(href="/lead/" + lead.id + "/edit") Edit
-    form(action="/lead/" + lead.id + "/delete", method="POST")
-      button(type="submit") Delete
-  //- lead objects are 
-  //- [object SequelizeInstance:Lead]
-  p #{req}
-  
+    h1 Lead
+    //- p #{title}
+    span this is the single lead page.
+    p 
+      span #{lead.email}
+      |
+      |
+      a(href="/lead/" + lead.id + "/edit") Edit
+      form(action="/lead/" + lead.id + "/delete", method="POST")
+        button(type="submit") Delete
+    //- lead objects are 
+    //- [object SequelizeInstance:Lead]
+    p #{req}
+    include common/footer.pug
+    +footer()  
