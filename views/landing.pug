@@ -3,12 +3,19 @@ html(lang="en")
   include common/head.pug
   +head("Starter MVP")
   body
+    header
+      include common/navbar.pug
+      +navbar()
+      p this is the header
     h1 Welcome to #{title}
-    p= subtitle
-
+    h3= subtitle
+    div minimum viable landing page
+    |
+    |
     form(action="/", method="POST")
       input(name="lead_email" type="email", placeholder="Enter email")
-      button(type="submit") Submit
+      button(type="submit") Get Started
+    //- next step is to make this shit appear as a table.
     if leads
       h1 Leads
       for lead in leads
