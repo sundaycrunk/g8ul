@@ -73,7 +73,7 @@ exports.show_lead = function(req, res, next) {
 
 exports.show_leads = function(req, res, next) {
   models.Lead.findAll().then(leads => {
-    res.render('landing', { title: 'Cleveland', subtitle: 'motherfucker', leads: leads });
+    res.render('landing', { title: 'Express & Node', subtitle: 'motherfucker', leads: leads });
   })
 }
 
