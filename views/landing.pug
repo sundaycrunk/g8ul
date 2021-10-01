@@ -5,8 +5,7 @@ html(lang="en")
   body
     header
       include common/navbar.pug
-      +navbar()
-      p this is the header
+      +navbar(user)
     h1 Welcome to #{title}
     h3= subtitle
     div minimum viable landing page

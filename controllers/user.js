@@ -66,7 +66,10 @@ exports.login = function(req, res, next) {
 	})(req, res, next);
 }
 exports.logout = function(req, res, next) {
+	// when this is called. req will have a .logout() attribute.
 	req.logout();
+	// destroy the session
 	req.session.destroy();
+	// redirect to slash.
 	res.redirect('/');
 }

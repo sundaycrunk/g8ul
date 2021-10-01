@@ -3,7 +3,7 @@
 const models = require('../models')
 
 exports.get_landing = function(req, res, next) {
-  res.render('landing', { title: 'Cleveland', subtitle: 'motherfucker' });
+  res.render('landing', { title: 'Node.js and Express.js', subtitle: 'motherfucker', user: req.user });
 }
 // ok brilliant.
 // the console is the dev console. not chrometools.

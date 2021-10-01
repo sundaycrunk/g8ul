@@ -1,13 +1,73 @@
-mixin navbar()
-  nav
-    ul
-      li.headlink
-        a(href="/") home
-      li.headlink
-        a(href="/leads") leads
-      li.headlink 
-        a(href="/signup") signup
-      li.headlink
-        a(href="/login") login
+//- mixin navbar(user)
+//-   nav.navbar.navbar-expand.navbar-light.bg-light
+//-     a(href="/", aria-label="Golden Goose").navbar-brand.mr-0.mr-md-2
+//-     .collapse.navbar-collapse Home
+//-       ul.navbar-nav.mr-auto
+//-         li.nav-item
+//-           a.nav-link(href="/") Home
+//-         li.nav-item
+//-           a.nav-link(href="/leads") Leads
+//-     .navbar-right
+//-       if user
+//-         span.navbar-text Hello #{user.email}!
+//-     //- .navbar-right
+//-         ul.navbar-nav.mr-auto
+//-           li.nav-item
+//-             a.nav-link(href="/logout") Logout
+//-       else
+//-         ul.navbar-nav.mr-auto
+//-           li.nav-item
+//-             a.nav-link(href="/signup") Sign up
+//-           li.nav-item
+//-             a.nav-link(href="/login") Login
 
-      
+//- this is not working.
+//- it's not being passed a user.
+
+//- mixin navbar(user)
+//-   nav.navbar.navbar-expand.navbar-light.bg-light
+//-     a(href="/", aria-label="Golden Goose").navbar-brand.mr-0.mr-md-2
+//-       img(src="/images/golden-goose.svg", width="36", height="36")
+//-     .collapse.navbar-collapse
+//-       ul.navbar-nav.mr-auto
+//-         li.nav-item
+//-           a.nav-link(href="/") Home
+//-         li.nav-item
+//-           a.nav-link(href="/leads") Leads
+//-     .navbar-right
+//-       if user
+//-         span.navbar-text Hello #{user.email}!
+//-     .navbar-right
+//-       ul.navbar-nav.mr-auto
+//-         li.nav-item
+//-           a.nav-link(href="/signup") Sign up
+//-         li.nav-item
+//-           a.nav-link(href="/login") Login
+//-         li.nav-item
+//-           a.nav-link(href="/logout") Logout
+
+
+mixin navbar(user)
+  nav.navbar.navbar-expand.navbar-dark.bg-none
+    a(href="/", aria-label="Golden Goose").navbar-brand.mr-0.mr-md-2
+      img(src="https://seeklogo.com/images/N/nodejs-logo-FBE122E377-seeklogo.com.png", width="36")
+    .collapse.navbar-collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          a.nav-link(href="/") Home
+        li.nav-item
+          a.nav-link(href="/leads") Leads
+    div.navbar-right
+      if user
+        //- div.navbar-right
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href="/") Hello #{user.email}!
+          li.nav-item
+            a.nav-link(href="/logout") Logout
+      else
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link(href="/signup") Sign up
+          li.nav-item
+            a.nav-link(href="/login") Login
