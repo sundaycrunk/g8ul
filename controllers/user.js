@@ -22,7 +22,9 @@ const generateHash = function(password) {
 	return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null)
 }
 
+// this returns a new user object.
 exports.signup = function(req, res, next) {
+	// this thing is the slot for errors.
 	let errors = {};
 	return validateUser(errors, req).then(errors => {
 		if (!isEmpty(errors)) {
