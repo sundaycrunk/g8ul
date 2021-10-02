@@ -4,6 +4,8 @@ var router = express.Router();
 let landing = require('../controllers/landing')
 let user = require('../controllers/user')
 
+let { isLoggedIn, hasAuth } = require('../middleware/hasAuth.js')
+
 router.get('/login', user.show_login)
 router.get('/signup', user.show_signup)
 router.post('/login', user.login)
@@ -16,13 +18,29 @@ router.get('/', landing.get_landing)
 router.post('/', landing.submit_lead)
 // this new route will call that Create() function we made in landing.js
 // it will not only call that function, but the browser path will set to /leads.
-router.get('/leads', landing.show_leads)
 
-router.get('/lead/:lead_id', landing.show_lead)
-router.get('/lead/:lead_id/edit', landing.show_edit_lead)
-router.post('/lead/:lead_id/edit', landing.edit_lead)
-router.post('/lead/:lead_id/delete', landing.delete_lead)
-router.post('/lead/:lead_id/delete-json', landing.delete_lead_json)
+
+// about to try this shit. adding a sequence called noop, prior to having
+// this shit connected. otherwise it requrns
+
+const noop = function(req, res, next) {
+  // next will transfer the control of execution to the next function in line
+  next()
+}
+
+// these noop calls are called middleware.
+// AHHHHH. so it checks whether it's logged in, prior to rendering the leads page.
+// otherwise it returns a 404 error.
+router.get('/leads', isLoggedIn, landing.show_leads)
+
+// how can i pass user to that tho?
+// the thing appears to be logged out if you change the path.
+
+router.get('/lead/:lead_id', hasAuth, landing.show_lead)
+router.get('/lead/:lead_id/edit', hasAuth, landing.show_edit_lead)
+router.post('/lead/:lead_id/edit', hasAuth, landing.edit_lead)
+router.post('/lead/:lead_id/delete', hasAuth, landing.delete_lead)
+router.post('/lead/:lead_id/delete-json', hasAuth, landing.delete_lead_json)
 
 
 module.exports = router;

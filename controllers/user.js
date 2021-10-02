@@ -39,8 +39,10 @@ exports.signup = function(req, res, next) {
 				if (user !== null) {
 					newUser = models.User.build({
 						email: req.body.email,
-						password: generateHash(req.body.password)
+						password: generateHash(req.body.password),
+						// is_admin: true
 					});
+					// it requires user to be null in order to make an admin. what the fuck?
 				} else {
 					newUser = models.User.build({
 						email: req.body.email,
